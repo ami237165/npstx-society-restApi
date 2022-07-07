@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Put, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { MemberService } from './member.service';
 import { CreateMemberDto } from './dto/create-member.dto';
 import { UpdateMemberDto } from './dto/update-member.dto';
@@ -7,28 +7,21 @@ import { UpdateMemberDto } from './dto/update-member.dto';
 export class MemberController {
   constructor(private readonly memberService: MemberService) {}
 
-  @Post()
-  create(@Body() createMemberDto: CreateMemberDto) {
-    return this.memberService.create(createMemberDto);
+  @Post('create')
+  async create(@Body() createMemberDto: CreateMemberDto):Promise<any>{
+    return await this.memberService.createMember(createMemberDto);
   }
 
-  @Get()
-  findAll() {
-    return this.memberService.findAll();
+  //update member
+  @Put('update')
+  async update(@Body() updateMemberDto:UpdateMemberDto):Promise<any>{
+    return await this.memberService.updateMember(updateMemberDto)
+  }
+  
+  //soft delete
+  @Put('delete')
+  async delete(@Body() createMemberDto:CreateMemberDto):Promise<any>{
+    return await this.memberService.delete(createMemberDto)
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.memberService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMemberDto: UpdateMemberDto) {
-    return this.memberService.update(+id, updateMemberDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.memberService.remove(+id);
-  }
 }

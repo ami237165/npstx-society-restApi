@@ -1,1 +1,0 @@
-# npstx-society-restApi

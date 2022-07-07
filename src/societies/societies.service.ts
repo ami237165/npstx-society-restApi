@@ -12,6 +12,7 @@ export class SocietiesService {
         private societyModel:Model<SocietyDocument>,
     ){}
 
+    //create society
     async saveSociety(body:SocietiesDTO):
     Promise<{ status: boolean, id?: string, msg:string}>{
         return new Promise(async (resolve,reject) => {
@@ -22,11 +23,11 @@ export class SocietiesService {
                 const tmp = new this.societyModel(body);
                 const societyObj = await tmp.save()
                 resolve({status:true, msg:"created successfully"});
-                return societyObj;
             }
         })
     }
 
+    // update or edit society
     async editSociety(body:SocietiesDTO):Promise<{status:boolean, msg:string}>{
         return new Promise(async (resolve, reject)=>{
 
