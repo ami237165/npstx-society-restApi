@@ -1,0 +1,29 @@
+{
+  "name": "societyapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ami237165/npstx-society-restApi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ami237165/npstx-society-restApi/issues"
+  },
+  "homepage": "https://github.com/ami237165/npstx-society-restApi#readme",
+  "dependencies": {
+    "@nestjs/common": "^9.0.2",
+    "@nestjs/mapped-types": "^1.1.0",
+    "@nestjs/mongoose": "^9.2.0",
+    "class-validator": "^0.13.2"
+  }
+}
