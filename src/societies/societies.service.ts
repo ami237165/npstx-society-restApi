@@ -3,6 +3,7 @@ import { SocietiesDTO } from './societies.dto';
 import { Model } from 'mongoose'
 import { InjectModel} from '@nestjs/mongoose'
 import { Society, SocietyDocument } from './entities/society.schema';
+import { logger } from 'src/logger';
 
 
 @Injectable()
@@ -16,8 +17,9 @@ export class SocietiesService {
     async saveSociety(body:SocietiesDTO):
     Promise<{ status: boolean, id?: string, msg:string}>{
         return new Promise(async (resolve,reject) => {
-            const matchRegNo = await this.societyModel.find({ societyRegistrationNo:body.societyRegistrationNo});
+            const matchRegNo = await this.societyModel.find({ "regNo":body.regNo});
             if(matchRegNo.length >= 1){
+                logger.info(`the society with registration no ${matchRegNo[0].regNo} is already exist`)
                 resolve({status:false, msg:"exist"})
             }else{
                 const tmp = new this.societyModel(body);
@@ -30,17 +32,10 @@ export class SocietiesService {
     // update or edit society
     async editSociety(body:SocietiesDTO):Promise<{status:boolean, msg:string}>{
         return new Promise(async (resolve, reject)=>{
-
             //find the society
-            const society = await this.societyModel.find({societyRegistrationNo:body.societyRegistrationNo});
-
-            
+            const society = await this.societyModel.find({"regNo":body.regNo});
             if(society.length > 0){
-                // let tmp = society[0]
-                // console.log(tmp);
-                // const newData = new this.societyModel(body);
-                // console.log(newData);
-                const data = await this.societyModel.updateOne({societyRegistrationNo:body.societyRegistrationNo}, {$set:body});
+                const data = await this.societyModel.updateOne({regNo:body.regNo}, {$set:body});
                 resolve({status:true, msg:"societyUpdated"})
             }else{
                 resolve({ status:false, msg:"society Not found"})
