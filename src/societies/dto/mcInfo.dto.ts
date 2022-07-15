@@ -1,4 +1,5 @@
 export class McInfoDto {
+    _id:string;
     periodMc?: string;
     startDate?: Date;
     endDate?: Date;

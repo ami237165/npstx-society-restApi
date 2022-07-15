@@ -73,10 +73,10 @@ export class SocietiesService {
 
 
     //create McInfo
-    async createMcInfo(mcInfo:McInfo):Promise<any>{
+    async createMcInfo(mcInfo:McInfoDto):Promise<any>{
         return new Promise( async(resolve,reject) => {
             try {
-                await new this.mcInfoModel(McInfoDto).save();
+                await new this.mcInfoModel(mcInfo).save();
                 logger.info("mcinfo created")
                 resolve({status:true, msg:"mcinfo created"})
             } catch (error) {

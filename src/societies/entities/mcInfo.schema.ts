@@ -1,11 +1,17 @@
-import { Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
 export type McInfoDocument = McInfo & Document;
 @Schema()
 export class McInfo {
+    @Prop()  
+    id:string;
+    @Prop()
     periodMc?: string;
+    @Prop()
     startDate?: Date;
+    @Prop()
     endDate?: Date;
+    @Prop()
     commiteeMemberDetails?: COMMMBER[];
   }
   export interface COMMMBER {

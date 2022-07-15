@@ -1,5 +1,6 @@
 import { Body, Controller, Post,Put } from '@nestjs/common';
 import { ImpUserPwdDto } from './dto/impUser.dto';
+import { McInfoDto } from './dto/mcInfo.dto';
 import { SocietiesDTO } from './dto/societies.dto';
 import { SocietiesService } from './societies.service';
 
@@ -22,5 +23,12 @@ export class SocietiesController {
   @Post('createImpUser')
   async createImpUser(@Body() body:ImpUserPwdDto){
     return await this.societiesService.createImpUser(body)
+  }
+
+
+  //creating mcInfo
+  @Post('createMcInfo')
+  async createMcInfo(@Body() body:McInfoDto):Promise<any>{
+    return await this.societiesService.createMcInfo(body);
   }
 }
