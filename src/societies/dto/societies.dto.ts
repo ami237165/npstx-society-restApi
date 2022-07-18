@@ -41,8 +41,8 @@ export class SocietiesDTO{
   interestWorking?: INTEREST_WORKING;
   footerFirst?: string;
   footerSecond?: string;
-  signatureBill?: SIGNATURE_BILL;
-  signatureVoucher?: SIGNATURE_VOUCHER;
+  signatureBill?: SIGNATURE_BILL[];
+  signatureVoucher?: SIGNATURE_VOUCHER[];
   authAmt?: string;
   liabilities?: string;
 }

@@ -87,9 +87,9 @@ export class Society {
   @Prop()
   footerSecond?: string;
   @Prop()
-  signatureBill?: SIGNATURE_BILL;
+  signatureBill?: SIGNATURE_BILL[];
   @Prop()
-  signatureVoucher?: SIGNATURE_VOUCHER;
+  signatureVoucher?: SIGNATURE_VOUCHER[];
   @Prop()
   authAmt?: string;
   @Prop()

@@ -8,6 +8,12 @@ import { ImpUserPwd, ImpUserPwdDocument } from './entities/impUser.schema';
 import { ImpUserPwdDto } from './dto/impUser.dto';
 import { McInfoDto } from './dto/mcInfo.dto';
 import { McInfo, McInfoDocument } from './entities/mcInfo.schema';
+import { StaffInfo, StaffInfoDocument } from './entities/staffInfo.schema';
+import { VenderInfo, VenderInfoDocument } from './entities/vendorInfo.schema';
+import { SocietyDoc, SocietyDocDocument } from './entities/societyDoc.schema';
+import { StaffInfoDto } from './dto/staffInfo.dto';
+import { VenderInfoDto } from './dto/vendorInfo.dto';
+import { SocietyDocDto } from './dto/societyDocument.dto';
 
 
 @Injectable()
@@ -19,6 +25,13 @@ export class SocietiesService {
         private impUserPwdModel: Model<ImpUserPwdDocument>,
         @InjectModel(McInfo.name)
         private mcInfoModel: Model<McInfoDocument>,
+        @InjectModel(StaffInfo.name)
+        private staffInfoModel: Model<StaffInfoDocument>,
+        @InjectModel(VenderInfo.name)
+        private vendorInfoModel: Model<VenderInfoDocument>,
+        @InjectModel(SocietyDoc.name)
+        private societyDocModel: Model<SocietyDocDocument>,
+
     ) { }
 
     //create society
@@ -62,7 +75,7 @@ export class SocietiesService {
                     resolve({ status: true, msg: "ImpUserPwd created successfully" })
                 }).catch((err) => {
                     logger.error(err);
-                    reject(err)
+                    resolve({status:false, msg:err})
                 })
             } catch (error) {
                 logger.error(error);
@@ -71,19 +84,75 @@ export class SocietiesService {
         })
     }
 
-
     //create McInfo
     async createMcInfo(mcInfo:McInfoDto):Promise<any>{
         return new Promise( async(resolve,reject) => {
             try {
-                await new this.mcInfoModel(mcInfo).save();
-                logger.info("mcinfo created")
-                resolve({status:true, msg:"mcinfo created"})
+                await new this.mcInfoModel(mcInfo).save().then(()=>{
+                    logger.info("mcinfo created")
+                    resolve({status:true, msg:"mcinfo created"})
+                }).catch((err) =>{
+                    resolve({status:false, msg:err})
+                })
             } catch (error) {
                 logger.error(error);
                 reject(error)
             }
         })
+    }
+
+    //create staffInfo 
+    async createStaffInfo(staffInfoDto:StaffInfoDto):Promise<any>{
+        return new Promise(async (resolve,reject) => {
+            try {
+                await new this.staffInfoModel(staffInfoDto).save().then(() => {
+                   logger.info("staffinfo created");
+                   resolve({status:true, msg:"staff info created"})
+                }).catch((err) => {
+                    resolve({status:false, msg:err})
+                })  
+            } catch (error) {
+                logger.error(error)
+                reject(error)
+            }
+        })
+
+    }
+
+    //create vendor info
+    async createVenderInfo(venderInfoDto:VenderInfoDto):Promise<any>{
+        return new Promise(async (resolve,reject) => {
+            try {
+                await new this.vendorInfoModel(venderInfoDto).save().then(() => {
+                   logger.info("venderinfo created");
+                   resolve({status:true, msg:"vender info created"})
+                }).catch((err) => {
+                    resolve({status:false, msg:err})
+                })  
+            } catch (error) {
+                logger.error(error)
+                reject(error)
+            }
+        })
+
+    }
+
+    //create societydoc
+    async createSocietyDoc(societyDocDtoDto:SocietyDocDto):Promise<any>{
+        return new Promise(async (resolve,reject) => {
+            try {
+                await new this.societyDocModel(societyDocDtoDto).save().then(() => {
+                   logger.info("society created");
+                   resolve({status:true, msg:"societydoc created"})
+                }).catch((err) => {
+                    resolve({status:false, msg:err})
+                })  
+            } catch (error) {
+                logger.error(error)
+                reject(error)
+            }
+        })
+
     }
 
 }
