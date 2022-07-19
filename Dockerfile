@@ -12,7 +12,7 @@ RUN npm install --force
 # Bundle app source
 COPY . .
 
-RUN nest start
+#RUN npm run start:dev
 
 # Creates a "dist" folder with the production build
 #RUN npm run build
@@ -21,3 +21,5 @@ EXPOSE 6020
 
 # Start the server using the production build
 # CMD [ "node", "dist/main.js" ]
+
+ CMD [ "npm", "run start:dev" ]
