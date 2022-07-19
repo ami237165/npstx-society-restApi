@@ -14,6 +14,8 @@ COPY . .
 
 RUN ls
 
+RUN npm run start:dev
+
 # Creates a "dist" folder with the production build
 #RUN npm run build
 
