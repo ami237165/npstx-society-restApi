@@ -1,4 +1,8 @@
+import { IsNotEmpty } from "class-validator";
+
 export class StaffInfoDto{
+  @IsNotEmpty()
+    societyId:string;
     staffDetails:Staff[]
   }
   

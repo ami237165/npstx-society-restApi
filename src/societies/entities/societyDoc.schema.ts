@@ -1,8 +1,11 @@
-import { Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 export type SocietyDocDocument = SocietyDoc & Document
 
 @Schema()
 export class SocietyDoc{
+  @Prop()  
+    societyId:string;
+    @Prop()
     societyDocument:Documents[]
   }
   

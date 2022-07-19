@@ -4,6 +4,8 @@ export type StaffInfoDocument = StaffInfo & Document
 
 @Schema()
 export class StaffInfo{
+  @Prop()  
+    societyId:string;
     @Prop()
     staffDetails:Staff[]
   }

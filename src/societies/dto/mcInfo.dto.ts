@@ -1,5 +1,9 @@
+import { IsNotEmpty } from "class-validator";
+
 export class McInfoDto {
     _id:string;
+    @IsNotEmpty()
+    societyId:string;
     periodMc?: string;
     startDate?: Date;
     endDate?: Date;

@@ -5,6 +5,8 @@ export type McInfoDocument = McInfo & Document;
 export class McInfo {
     @Prop()  
     id:string;
+    @Prop()  
+    societyId:string;
     @Prop()
     periodMc?: string;
     @Prop()

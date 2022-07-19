@@ -1,5 +1,9 @@
+import { IsNotEmpty } from "class-validator";
+
 export class ImpUserPwdDto {
     _id:string
+    @IsNotEmpty()
+    societyId:string;
     incomePan?: string;
     incomeUserName?: string;
     incomePass?: string;

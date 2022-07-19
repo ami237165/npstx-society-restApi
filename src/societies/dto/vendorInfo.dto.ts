@@ -1,4 +1,8 @@
+import { IsNotEmpty } from "class-validator";
+
 export class VenderInfoDto{
+  @IsNotEmpty()
+    societyId:string;
     venderDetails:Vendor[]
   }
   export interface Vendor {

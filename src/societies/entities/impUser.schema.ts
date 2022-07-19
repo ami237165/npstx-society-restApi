@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { IsNotEmpty } from "class-validator";
 
 export type ImpUserPwdDocument = ImpUserPwd & Document;
 
@@ -6,6 +7,8 @@ export type ImpUserPwdDocument = ImpUserPwd & Document;
 export class ImpUserPwd {
     @Prop()  
     id:string;
+    @Prop()
+    societyId:string;
     @Prop()
     incomePan?: string;
     @Prop()

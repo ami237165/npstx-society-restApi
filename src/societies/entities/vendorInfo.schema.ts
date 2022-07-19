@@ -3,6 +3,8 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 export type VenderInfoDocument = VenderInfo & Document; 
 @Schema()
 export class VenderInfo{
+  @Prop()  
+    societyId:string;
     @Prop()
     venderDetails:Vendor[]
   }
