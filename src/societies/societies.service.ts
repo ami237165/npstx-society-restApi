@@ -37,12 +37,11 @@ export class SocietiesService {
     ) { }
 
     //create society
-    async saveSociety(body: SocietiesDTO):
+    async saveSociety(body: SocietiesDTO, societyImg):
         Promise<any> {
         return new Promise(async (resolve, reject) => {
-            if(body.societyImg != null){
-                uploadSocietyImg(storageRef,body.societyImg)
-            }
+           
+                uploadSocietyImg(storageRef, societyImg)
             const matchRegNo = await this.societyModel.find({ "regNo": body.regNo });
             if (matchRegNo.length >= 1) {
                 logger.info(`the society with registration no ${matchRegNo[0].regNo} is already exist`)

@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/ami237165/npstx-society-restApi#readme",
   "dependencies": {
+    "@google-cloud/storage": "^6.2.3",
     "@nestjs/common": "^9.0.2",
     "@nestjs/mapped-types": "^1.1.0",
     "@nestjs/mongoose": "^9.2.0",

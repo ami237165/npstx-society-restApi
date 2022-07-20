@@ -1,3 +1,4 @@
 import { getStorage, ref } from "firebase/storage";
-export const storage = getStorage();
+import {FirebaseApp} from './config'
+export const storage = getStorage(FirebaseApp);
 export const storageRef = ref(storage, 'societyProfile');

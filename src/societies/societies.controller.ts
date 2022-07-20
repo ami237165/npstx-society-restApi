@@ -1,19 +1,21 @@
 import { StaffInfoDto } from './dto/staffInfo.dto';
-import { Body, Controller, Post,Put } from '@nestjs/common';
+import { Body, Controller, Post,Put, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { ImpUserPwdDto } from './dto/impUser.dto';
 import { McInfoDto } from './dto/mcInfo.dto';
 import { SocietiesDTO } from './dto/societies.dto';
 import { SocietiesService } from './societies.service';
 import { VenderInfoDto } from './dto/vendorInfo.dto';
 import { SocietyDocDto } from './dto/societyDocument.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('societies')
 export class SocietiesController {
   constructor(private readonly societiesService: SocietiesService) {}
 
   @Post('create')
-  async saveSociety(@Body() body:SocietiesDTO):Promise<any>{
-    return await this.societiesService.saveSociety(body)
+  @UseInterceptors(FileInterceptor('societymg'))
+  async saveSociety(@Body() body:SocietiesDTO, @UploadedFile() societymg):Promise<any>{
+    return await this.societiesService.saveSociety(body, societymg)
   }
 
   //editing society
