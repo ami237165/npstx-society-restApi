@@ -14,8 +14,6 @@ import { SocietyDoc, SocietyDocDocument } from './entities/societyDoc.schema';
 import { StaffInfoDto } from './dto/staffInfo.dto';
 import { VenderInfoDto } from './dto/vendorInfo.dto';
 import { SocietyDocDto } from './dto/societyDocument.dto';
-import { uploadSocietyImg } from 'src/firebase/uploaderScript';
-import { storageRef } from 'src/firebase/references';
 
 
 @Injectable()
@@ -37,11 +35,10 @@ export class SocietiesService {
     ) { }
 
     //create society
-    async saveSociety(body: SocietiesDTO, societyImg):
+    async saveSociety(body: SocietiesDTO):
         Promise<any> {
         return new Promise(async (resolve, reject) => {
            
-                uploadSocietyImg(storageRef, societyImg)
             const matchRegNo = await this.societyModel.find({ "regNo": body.regNo });
             if (matchRegNo.length >= 1) {
                 logger.info(`the society with registration no ${matchRegNo[0].regNo} is already exist`)

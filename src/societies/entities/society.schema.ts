@@ -75,7 +75,7 @@ export class Society {
   @Prop()
   limitOfGstExampt?: string;
   @Prop()
-  societyImg?:Buffer;
+  // societyImg?:Buffer;
   @Prop()
   interestMethod?: INTEREST_METHOD;
   @Prop()

@@ -1,8 +1,9 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { NestExpressApplication } from '@nestjs/platform-express';
+import { NestExpressApplication , ExpressAdapter} from '@nestjs/platform-express';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-
+// import * as express from 'express';
+// import * as functions from 'firebase-functions';
 import { AppModule } from './app.module';
 
 async function bootstrap() {

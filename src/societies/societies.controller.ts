@@ -13,9 +13,8 @@ export class SocietiesController {
   constructor(private readonly societiesService: SocietiesService) {}
 
   @Post('create')
-  @UseInterceptors(FileInterceptor('societymg'))
-  async saveSociety(@Body() body:SocietiesDTO, @UploadedFile() societymg):Promise<any>{
-    return await this.societiesService.saveSociety(body, societymg)
+  async saveSociety(@Body() body:SocietiesDTO):Promise<any>{
+    return await this.societiesService.saveSociety(body)
   }
 
   //editing society
