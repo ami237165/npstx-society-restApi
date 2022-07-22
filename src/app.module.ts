@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SocietiesModule } from './societies/societies.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { FirebaseStuffModule } from './firebase-stuff/firebase-stuff.module';
+import { GcsModule } from './gcs/gcs.module';
 
 
 @Module({
@@ -14,7 +14,8 @@ import { FirebaseStuffModule } from './firebase-stuff/firebase-stuff.module';
     MongooseModule.forRoot('mongodb://103.150.136.70',{
   dbName:'societydb'
 }),
-    FirebaseStuffModule],
+    GcsModule,
+],
   controllers: [AppController],
   providers: [AppService],
 })

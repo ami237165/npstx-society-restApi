@@ -36,7 +36,8 @@ export class SocietiesDTO{
   cgstRoundedUpto?: string;
   sgstRoundedUpto?: string;
   limitOfGstExampt?: string;
-  // societyImg?: File;
+  mId?:string;
+  societyImg?: URL;
   interestMethod?: INTEREST_METHOD;
   interestType?: INTEREST_TYPE;
   interestWorking?: INTEREST_WORKING;

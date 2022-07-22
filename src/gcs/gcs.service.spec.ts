@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { FirebaseStuffService } from './firebase-stuff.service';
+import { GcsService } from './gcs.service';
 
-describe('FirebaseStuffService', () => {
-  let service: FirebaseStuffService;
+describe('GcsService', () => {
+  let service: GcsService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [FirebaseStuffService],
+      providers: [GcsService],
     }).compile();
 
-    service = module.get<FirebaseStuffService>(FirebaseStuffService);
+    service = module.get<GcsService>(GcsService);
   });
 
   it('should be defined', () => {

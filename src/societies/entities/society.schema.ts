@@ -35,6 +35,8 @@ export class Society {
   @Prop()
   state: string;
   @Prop()
+  mId?:string;
+  @Prop()
   gstIn?: string;
   @Prop()
   uidNo?: string;
