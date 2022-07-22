@@ -5,7 +5,7 @@ import { AppService } from './app.service';
 import { SocietiesModule } from './societies/societies.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { GcsModule } from './gcs/gcs.module';
-
+import { MulterModule } from '@nestjs/platform-express/multer';
 
 @Module({
   imports: [
@@ -15,6 +15,9 @@ import { GcsModule } from './gcs/gcs.module';
   dbName:'societydb'
 }),
     GcsModule,
+    MulterModule.register({
+      dest:'/home/npst/amir/npstx-society-restApi/src/uploads',
+    })
 ],
   controllers: [AppController],
   providers: [AppService],

@@ -12,9 +12,7 @@ export class GcsController {
 
   @Post()
   @UseInterceptors(FilesInterceptor('image',10000000,multerOptions))
-  async create(@Body() body: CreateGcDto, @UploadedFile() file:{path: string}):Promise<any> { 
-   console.log(multerOptions.storage._handleFile());
-   
+  async create(@Body() body: CreateGcDto, @UploadedFile() image:Express.Multer.File):Promise<any> {    
   return this.gcsService.create(body)
   }
 

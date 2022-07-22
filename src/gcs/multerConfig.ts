@@ -43,7 +43,7 @@ export const multerOptions = {
             // Calling the callback passing the random name generated with the original extension name
             cb(null, `${uuid()}${extname(file.originalname)}`);
           
-        },
+        },        
     }),
 };
 
